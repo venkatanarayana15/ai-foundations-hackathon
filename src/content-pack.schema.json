@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Samanantar Content Pack",
+  "type": "object",
+  "required": ["packVersion", "languages", "items", "errorCodes"],
+  "properties": {
+    "packVersion": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "languages": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["hi", "mr", "te", "ta"] }
+    },
+    "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/item" } },
+    "errorCodes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/errorCode" } }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "required": ["itemId", "domain", "level", "prompt", "ncertRef", "cbseFln", "maxTimeMs"],
+      "additionalProperties": false,
+      "properties": {
+        "itemId": { "type": "string", "pattern": "^(LIT|NUM)-[A-Z0-9]+-\\d{3}$" },
+        "domain": { "enum": ["literacy", "numeracy"] },
+        "level": {
+          "enum": [
+            "pre_letter", "letter", "word", "paragraph", "story",
+            "num_concrete", "num_representation", "num_abstract"
+          ]
+        },
+        "prompt": { "type": "string" },
+        "kind": { "enum": ["read_aloud", "recognition", "tap_answer", "audio_choice"] },
+        "choices": { "type": "array", "items": { "type": "string" } },
+        "correctIndex": { "type": "integer", "minimum": 0 },
+        "accepts": { "type": "array", "items": { "type": "string" } },
+        "audioPrompt": { "type": "string" },
+        "ncertRef": {
+          "type": "object",
+          "required": ["book", "page"],
+          "properties": {
+            "book": { "type": "string", "minLength": 3 },
+            "page": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "cbseFln": { "type": "string", "minLength": 3 },
+        "maxTimeMs": { "type": "integer", "minimum": 2000 },
+        "acceptsTapFallback": { "type": "boolean" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "const": "tap_answer" } } },
+          "then": { "required": ["choices", "correctIndex"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "audio_choice" } } },
+          "then": { "required": ["accepts"] }
+        }
+      ]
+    },
+    "errorCode": {
+      "type": "object",
+      "required": ["code", "label", "detect", "remediations", "taRL"],
+      "additionalProperties": false,
+      "properties": {
+        "code": { "type": "string", "pattern": "^(LIT|NUM)-[A-Z]{2,4}-\\d{2}$" },
+        "label": { "type": "string" },
+        "detect": {
+          "type": "object",
+          "required": ["domain", "level", "signal"],
+          "properties": {
+            "domain": { "enum": ["literacy", "numeracy"] },
+            "level": { "enum": ["letter", "word", "paragraph", "num_concrete", "num_representation", "num_abstract"] },
+            "signal": {
+              "type": "object",
+              "required": ["kind", "value"],
+              "properties": {
+                "kind": { "enum": ["exact_miss", "borrow_needed", "borrow_avoided", "reversal", "no_response"] },
+                "value": { "type": "string" }
+              }
+            }
+          }
+        },
+        "remediations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["ncertRef", "craStage", "activity"],
+            "properties": {
+              "ncertRef": { "type": "string" },
+              "craStage": { "enum": ["concrete", "representational", "abstract"] },
+              "activity": { "type": "string" }
+            }
+          }
+        },
+        "taRL": { "type": "string" }
+      }
+    }
+  }
+}

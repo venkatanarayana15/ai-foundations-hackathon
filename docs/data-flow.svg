@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Samanantar — data flow for the multigrade loop.
+  Standalone SVG; no external fonts or assets.
+  Regenerate from docs/data-flow.mmd (Mermaid) — keep the two in sync.
+  Two AI touchpoints (Indic ASR on-device, Claude in the cloud), one validator,
+  one human override.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="1500" viewBox="0 0 1260 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Samanantar data flow: two AI touchpoints, one validator, one human override</title>
+  <desc id="desc">Flow from a child speaking through on-device Indic ASR, deterministic matching and error classification, into an append-only encrypted event log. A pure fold produces the level-map. Offline, a deterministic PlanAssembler composes pre-validated activity blocks; online, Claude with NCERT retrieval generates a three-band forty-minute rotation. Both pass a validator that requires an NCERT page and CBSE FLN code. The result reaches the teacher as a plan card, is cached to extend the offline tier, and teacher actions flow back into the event log and optional sync.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="arrowAI" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B45309"/>
+    </marker>
+    <marker id="arrowDash" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0F766E"/>
+    </marker>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .t       { font-family: "Segoe UI", Helvetica, Arial, sans-serif; }
+      .box     { fill: #FFFFFF; stroke: #E2E8F0; stroke-width: 1.5; rx: 12; }
+      .boxAI   { fill: #FFFBEB; stroke: #D97706; stroke-width: 2; rx: 12; }
+      .boxStore{ fill: #F0FDFA; stroke: #0D9488; stroke-width: 1.5; rx: 12; }
+      .boxOut  { fill: #FFFFFF; stroke: #0D9488; stroke-width: 2; rx: 12; }
+      .diamond { fill: #FFFFFF; stroke: #475569; stroke-width: 1.5; }
+      .lbl     { font-size: 16px; font-weight: 700; fill: #134E4A; }
+      .sub     { font-size: 13px; fill: #475569; }
+      .edge    { stroke: #475569; stroke-width: 1.8; fill: none; marker-end: url(#arrow); }
+      .edgeAI  { stroke: #B45309; stroke-width: 2;   fill: none; marker-end: url(#arrowAI); }
+      .edgeD   { stroke: #0F766E; stroke-width: 1.8; fill: none; stroke-dasharray: 7 5; marker-end: url(#arrowDash); }
+      .edgeLbl { font-size: 12px; font-weight: 700; fill: #475569; }
+      .badge   { fill: #D97706; rx: 6; }
+      .badgeT  { font-size: 11px; font-weight: 800; fill: #FFFFFF; letter-spacing: 0.06em; }
+      .h1      { font-size: 27px; font-weight: 800; fill: #134E4A; }
+      .h2      { font-size: 15px; fill: #475569; }
+      .foot    { font-size: 12.5px; fill: #475569; }
+    </style>
+  </defs>
+
+  <rect width="1260" height="1500" fill="#FDFBF7"/>
+
+  <!-- ================= title ================= -->
+  <text class="t h1" x="60" y="56">Samanantar — data flow (the multigrade loop)</text>
+  <text class="t h2" x="60" y="84">Two AI touchpoints, one validator, and a human override. Diagnosis is deterministic; only planning is generative.</text>
+  <line x1="60" y1="100" x2="1200" y2="100" stroke="#E2E8F0" stroke-width="1.5"/>
+
+  <!-- ================= edges (drawn first, under the boxes) ================= -->
+  <!-- main column -->
+  <path class="edge" d="M 600 182 L 600 212"/>
+  <path class="edge" d="M 600 274 L 600 304"/>
+  <path class="edge" d="M 600 366 L 600 368"/>
+  <!-- confidence: no -> tap fallback -->
+  <path class="edge" d="M 350 420 L 304 420" marker-end="url(#arrow)"/>
+  <text class="t edgeLbl" x="330" y="410" text-anchor="end">no</text>
+  <!-- confidence: yes -> matcher -->
+  <path class="edge" d="M 600 472 L 600 520"/>
+  <text class="t edgeLbl" x="612" y="500">yes</text>
+  <!-- tap fallback rejoins the deterministic path -->
+  <path class="edge" d="M 180 458 L 180 551 L 386 551"/>
+  <!-- matcher -> classifier -> log -> level-map -->
+  <path class="edge" d="M 600 582 L 600 612"/>
+  <path class="edge" d="M 600 674 L 600 704"/>
+  <path class="edge" d="M 600 766 L 600 796"/>
+  <path class="edge" d="M 600 858 L 600 862"/>
+  <!-- network: no -> offline assembler -->
+  <path class="edge" d="M 370 912 L 304 912" marker-end="url(#arrow)"/>
+  <text class="t edgeLbl" x="352" y="902" text-anchor="end">no</text>
+  <!-- network: yes -> Claude -->
+  <path class="edgeAI" d="M 830 912 L 836 912"/>
+  <text class="t edgeLbl" x="840" y="902" fill="#B45309">yes</text>
+  <!-- both paths converge on the validator -->
+  <path class="edge" d="M 180 952 L 180 1141 L 386 1141"/>
+  <path class="edgeAI" d="M 1020 1056 L 1020 1141 L 814 1141"/>
+  <!-- validator -> teacher UI -->
+  <path class="edge" d="M 600 1172 L 600 1210"/>
+  <!-- validator -> plan cache (extends the offline tier) -->
+  <path class="edge" d="M 810 1141 L 825 1141 L 825 1281 L 836 1281"/>
+  <!-- teacher UI -> runs the block -->
+  <path class="edge" d="M 600 1272 L 600 1310"/>
+  <!-- teacher actions flow back into the event log -->
+  <path class="edgeD" d="M 810 1341 L 1230 1341 L 1230 735 L 814 735"/>
+  <text class="t edgeLbl" x="1218" y="1200" text-anchor="end" fill="#0F766E">override + completion → events</text>
+  <!-- event log -> optional sync -->
+  <path class="edgeD" d="M 390 735 L 345 735 L 345 1401 L 304 1401"/>
+  <text class="t edgeLbl" x="352" y="1000" fill="#0F766E">events</text>
+
+  <!-- ================= main column ================= -->
+  <!-- A -->
+  <rect class="box" x="390" y="120" width="420" height="62" filter="url(#soft)"/>
+  <text class="t lbl" x="600" y="148" text-anchor="middle">Child speaks / taps</text>
+  <text class="t sub" x="600" y="168" text-anchor="middle">offline · 16 kHz mono · one shared teacher device</text>
+
+  <!-- B -->
+  <rect class="box" x="390" y="212" width="420" height="62" filter="url(#soft)"/>
+  <text class="t lbl" x="600" y="240" text-anchor="middle">VAD + utterance trim</text>
+  <text class="t sub" x="600" y="260" text-anchor="middle">hard cap 30 s · no speech → “no response”, never an error</text>
+
+  <!-- C — AI -->
+  <rect class="boxAI" x="390" y="304" width="420" height="62" filter="url(#soft)"/>
+  <text class="t lbl" x="600" y="332" text-anchor="middle">Indic ASR — on device, INT8</text>
+  <text class="t sub" x="600" y="352" text-anchor="middle">child speech → transcript + confidence · audio discarded</text>
+  <rect class="badge" x="742" y="314" width="52" height="20"/>
+  <text class="t badgeT" x="768" y="328" text-anchor="middle">AI</text>
+
+  <!-- D -->
+  <polygon class="diamond" points="600,368 830,420 600,472 370,420" filter="url(#soft)"/>
+  <text class="t lbl" x="600" y="426" text-anchor="middle">confidence ≥ τ ?</text>
+
+  <!-- E — tap fallback -->
+  <rect class="box" x="60" y="396" width="240" height="62" filter="url(#soft)"/>
+  <text class="t lbl" x="180" y="421" text-anchor="middle">Tap fallback</text>
+  <text class="t sub" x="180" y="441" text-anchor="middle">teacher 1-tap override</text>
+
+  <!-- F -->
+  <rect class="box" x="390" y="520" width="420" height="62" filter="url(#soft)"/>
+  <text class="t lbl" x="600" y="548" text-anchor="middle">Deterministic matcher</text>
+  <text class="t sub" x="600" y="568" text-anchor="middle">Devanagari-tolerant · confidence-weighted · unit-tested</text>
+
+  <!-- G -->
+  <rect class="box" x="390" y="612" width="420" height="62" filter="url(#soft)"/>
+  <text class="t lbl" x="600" y="640" text-anchor="middle">Error classifier</text>
+  <text class="t sub" x="600" y="660" text-anchor="middle">ASER level + error code (e.g. NUM-ABS-01 borrowing)</text>
+
+  <!-- H -->
+  <rect class="boxStore" x="390" y="704" width="420" height="62" filter="url(#soft)"/>
+  <text class="t lbl" x="600" y="732" text-anchor="middle">Append-only event log</text>
+  <text class="t sub" x="600" y="752" text-anchor="middle">SQLCipher at rest · pseudonymous IDs · source of truth</text>
+
+  <!-- I -->
+  <rect class="boxStore" x="390" y="796" width="420" height="62" filter="url(#soft)"/>
+  <text class="t lbl" x="600" y="824" text-anchor="middle">Level-map snapshot</text>
+  <text class="t sub" x="600" y="844" text-anchor="middle">pure fold over events · corrupt → delete and replay</text>
+
+  <!-- J -->
+  <polygon class="diamond" points="600,862 830,912 600,962 370,912" filter="url(#soft)"/>
+  <text class="t lbl" x="600" y="918" text-anchor="middle">network?</text>
+
+  <!-- K — offline assembler -->
+  <rect class="boxStore" x="60" y="990" width="240" height="62" filter="url(#soft)"/>
+  <text class="t lbl" x="180" y="1015" text-anchor="middle">PlanAssembler</text>
+  <text class="t sub" x="180" y="1035" text-anchor="middle">offline · pre-validated blocks only</text>
+
+  <!-- L — Claude -->
+  <rect class="boxAI" x="840" y="980" width="360" height="76" filter="url(#soft)"/>
+  <text class="t lbl" x="1020" y="1008" text-anchor="middle">Claude + NCERT retrieval</text>
+  <text class="t sub" x="1020" y="1028" text-anchor="middle">level-map + chapter → 3-band 40-min</text>
+  <text class="t sub" x="1020" y="1046" text-anchor="middle">rotation · Hindi talk-lines</text>
+  <rect class="badge" x="1152" y="990" width="52" height="20"/>
+  <text class="t badgeT" x="1178" y="1004" text-anchor="middle">AI</text>
+
+  <!-- M — validator -->
+  <rect class="box" x="390" y="1110" width="420" height="62" filter="url(#soft)" stroke="#B45309" stroke-width="2"/>
+  <text class="t lbl" x="600" y="1138" text-anchor="middle">VALIDATOR</text>
+  <text class="t sub" x="600" y="1158" text-anchor="middle">NCERT page + FLN code required · ≤ 40 min · else reject</text>
+
+  <!-- N — plan cache -->
+  <rect class="boxStore" x="840" y="1250" width="360" height="62" filter="url(#soft)"/>
+  <text class="t lbl" x="1020" y="1278" text-anchor="middle">Plan cache</text>
+  <text class="t sub" x="1020" y="1298" text-anchor="middle">extends the offline tier for future days</text>
+
+  <!-- O -->
+  <rect class="boxOut" x="390" y="1210" width="420" height="62" filter="url(#soft)"/>
+  <text class="t lbl" x="600" y="1238" text-anchor="middle">Teacher UI</text>
+  <text class="t sub" x="600" y="1258" text-anchor="middle">plan card · station cards · timer · “help first” · override</text>
+
+  <!-- P -->
+  <rect class="box" x="390" y="1310" width="420" height="62" filter="url(#soft)"/>
+  <text class="t lbl" x="600" y="1338" text-anchor="middle">Teacher runs the block</text>
+  <text class="t sub" x="600" y="1358" text-anchor="middle">override + completion logged as events</text>
+
+  <!-- Q — sync -->
+  <rect class="box" x="60" y="1370" width="240" height="62" filter="url(#soft)"/>
+  <text class="t lbl" x="180" y="1395" text-anchor="middle">Optional sync</text>
+  <text class="t sub" x="180" y="1415" text-anchor="middle">opt-in · cursor · gzip · batch 500</text>
+
+  <!-- ================= footer ================= -->
+  <line x1="60" y1="1452" x2="1200" y2="1452" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text class="t foot" x="60" y="1476">
+    Connectivity is required only to generate a plan that has never been generated before.
+    Assessment, storage, grouping and running a cached plan are 100% offline.
+  </text>
+  <text class="t foot" x="60" y="1494" fill="#0F766E">
+    Dashed green = events flowing back. Amber = a frontier-model call site. Everything between them is deterministic, auditable code.
+  </text>
+</svg>

@@ -1,0 +1,24 @@
+{
+  "packVersion": "1.3.0",
+  "languages": ["hi", "mr"],
+  "generated": "2026-09-22",
+  "ciRule": "Every item must have ncertRef and cbseFln — CI blocks build if null",
+  "items": [
+    {"id":"LIT-PRE-01","domain":"literacy","level":"Pre-Letter","prompt_hi":"अपना नाम पहचानो — 'मीरा' कहाँ लिखा है?","prompt_mr":"आपले नाव ओळखा — 'मीरा' कुठे लिहिले आहे?","prompt_en":"Find your name — where is 'Meera' written?","target":"मीरा","expectedPhonemes":["mi","ra"],"ncertRef":{"book":"Rimjhim-1","page":8},"cbseFln":"FLN-L-1.1 Print Concepts","audioPrompt":"audio/hi/LIT-PRE-01.mp3","acceptsTapFallback":true,"cra":"concrete"},
+    {"id":"LIT-L-01","domain":"literacy","level":"Letter","prompt_hi":"यह अक्षर पढ़ो — 'ब'","prompt_mr":"हे अक्षर वाचा — 'ब'","prompt_en":"Read this letter — 'ब'","target":"ब","expectedPhonemes":["ba"],"ncertRef":{"book":"Rimjhim-1","page":24},"cbseFln":"FLN-L-2.1 Akshar recognition","audioPrompt":"audio/hi/LIT-L-01.mp3","acceptsTapFallback":true,"cra":"concrete"},
+    {"id":"LIT-W-01","domain":"literacy","level":"Word","prompt_hi":"शब्द पढ़ो — 'बिल्ली'","prompt_mr":"शब्द वाचा — 'बिल्ली'","prompt_en":"Read the word — 'बिल्ली'","target":"बिल्ली","expectedPhonemes":["bil","li"],"ncertRef":{"book":"Rimjhim-1","page":24},"cbseFln":"FLN-L-2.1 Blending akshars into words","audioPrompt":"audio/hi/LIT-W-01.mp3","acceptsTapFallback":true,"cra":"representational"},
+    {"id":"LIT-P-01","domain":"literacy","level":"Paragraph","prompt_hi":"पैराग्राफ पढ़ो — 3 वाक्य","prompt_mr":"परिच्छेद वाचा — 3 वाक्ये","prompt_en":"Read the paragraph — 3 sentences","target":"paragraph","expectedPhonemes":[],"ncertRef":{"book":"Rimjhim-2","page":12},"cbseFln":"FLN-L-3.2 Fluency","audioPrompt":"audio/hi/LIT-P-01.mp3","acceptsTapFallback":true,"cra":"abstract"},
+    {"id":"LIT-S-01","domain":"literacy","level":"Story","prompt_hi":"कहानी पढ़ो — 5 वाक्य","prompt_mr":"गोष्ट वाचा — 5 वाक्ये","prompt_en":"Read the story — 5 sentences","target":"story","expectedPhonemes":[],"ncertRef":{"book":"Rimjhim-2","page":18},"cbseFln":"FLN-L-3.3 Comprehension","audioPrompt":"audio/hi/LIT-S-01.mp3","acceptsTapFallback":true,"cra":"abstract"},
+    {"id":"NUM-C-01","domain":"numeracy","level":"Concrete","prompt_hi":"गिनो — 7 आम (चित्र)","prompt_mr":"मोजा — 7 आंबे (चित्र)","prompt_en":"Count — 7 mangoes (picture)","target":"7","expectedPhonemes":[],"ncertRef":{"book":"Math-Magic-1","page":28},"cbseFln":"FLN-N-1.1 Counting & place value","audioPrompt":"audio/hi/NUM-C-01.mp3","acceptsTapFallback":true,"cra":"concrete"},
+    {"id":"NUM-R-01","domain":"numeracy","level":"Representational","prompt_hi":"47 - 29 = ? (संख्या रेखा)","prompt_mr":"47 - 29 = ? (संख्या रेषा)","prompt_en":"47 - 29 = ? (number line)","target":"18","expectedPhonemes":[],"ncertRef":{"book":"Math-Magic-2","page":45},"cbseFln":"FLN-N-2.3 Subtraction with regrouping","audioPrompt":"audio/hi/NUM-R-01.mp3","acceptsTapFallback":true,"cra":"representational"},
+    {"id":"NUM-A-01","domain":"numeracy","level":"Abstract","prompt_hi":"47 - 29 = ?","prompt_mr":"47 - 29 = ?","prompt_en":"47 - 29 = ?","target":"18","expectedPhonemes":[],"ncertRef":{"book":"Math-Magic-2","page":45},"cbseFln":"FLN-N-2.3 Regrouping","audioPrompt":"audio/hi/NUM-A-01.mp3","acceptsTapFallback":false,"cra":"abstract"}
+  ],
+  "errorCodes": {
+    "LIT-01": {"label":"Confuses ब/व","misconception":"Visual similarity (circular component)","fix":"Rimjhim-1 p.24 Sound Matching — minimal pairs ब/व","taRL":"Phonemic awareness before decoding","skill":"Phonemic Awareness","hint":"अंतिम ध्वनि देखो: 'व' में नीचे गोल है, 'ब' में नहीं।"},
+    "LIT-02": {"label":"Drops suffix बिल्ली→बिल","misconception":"Weak phonological blending","fix":"Rimjhim-2 p.12 Word Building with matras","taRL":"Scaffold simple → complex","skill":"Decoding","hint":"अंत देखो: 'ल्ली' — 'ल्' + 'ई' साथ बोलो।"},
+    "LIT-03": {"label":"Directionality","misconception":"Left-right confusion","fix":"Rimjhim-1 p.8 Tracking practice","taRL":"Print concepts first","skill":"Print Concepts","hint":"बायें से दायें उंगली चलाओ।"},
+    "MATH-01": {"label":"Forgets borrowing (47-29=22)","misconception":"Place value regrouping","fix":"Math-Magic-2 p.45 Bundling sticks into tens/ones","taRL":"Concrete→Representational→Abstract","skill":"Subtraction with Regrouping","hint":"7 में से 9 नहीं जा सकता — 1 दहाई उधार लो।"},
+    "MATH-02": {"label":"Counts all 3+4=1..7","misconception":"No mental number line","fix":"Math-Magic-1 p.33 Number bonds to 10","taRL":"Fluency before abstraction","skill":"Mental Maths","hint":"3 मन में रखो, 4 आगे गिनो: 4,5,6,7।"},
+    "MATH-03": {"label":"Reverses 16/61","misconception":"Place value confusion","fix":"Math-Magic-1 p.28 Base-10 blocks","taRL":"C-R-A","skill":"Place Value","hint":"पहला अंक दहाई, दूसरा इकाई है।"}
+  }
+}

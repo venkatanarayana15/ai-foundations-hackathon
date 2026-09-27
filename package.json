@@ -1,0 +1,13 @@
+{
+  "name": "samanantar-core",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test --test-reporter=spec \"tests/*.test.mjs\"",
+    "sim": "node tests/e2e-classroom-simulation.test.mjs"
+  },
+  "dependencies": {
+    "csv": "^6.3.11"
+  }
+}

@@ -1,0 +1,29 @@
+%% Samanantar — data flow for the multigrade loop.
+%% Source of truth for docs/data-flow.svg. Keep the two in sync.
+%% Two AI touchpoints, one validator, one human override.
+flowchart TD
+    A["Child speaks / taps<br/>offline · 16 kHz mono"] --> B["VAD + trim<br/>max 30 s"]
+    B --> C["Indic ASR on-device · INT8<br/>transcript + confidence"]
+    C --> D{"confidence ≥ τ ?"}
+    D -- "no" --> E["Tap fallback<br/>teacher 1-tap override"]
+    D -- "yes" --> F["Deterministic matcher<br/>Devanagari-tolerant"]
+    E --> F
+    F --> G["Error classifier<br/>level + error code"]
+    G --> H["Append-only event log<br/>SQLCipher · pseudonymous IDs"]
+    H --> I["Level-map snapshot<br/>pure fold over events"]
+    I --> J{"network?"}
+    J -- "offline" --> K["PlanAssembler<br/>pre-validated blocks only"]
+    J -- "online" --> L["Claude + NCERT retrieval<br/>3-band 40-min rotation"]
+    K --> M["VALIDATOR<br/>NCERT page + FLN code required · ≤ 40 min"]
+    L --> M
+    M --> O["Teacher UI<br/>plan card · station cards · timer"]
+    M --> N["Plan cache<br/>extends the offline tier"]
+    N --> O
+    O --> P["Teacher runs the block<br/>override + completion"]
+    P -.-> H
+    H -.-> Q["Optional opt-in sync<br/>cursor · gzip · batch 500"]
+
+    classDef ai fill:#FFFBEB,stroke:#D97706,stroke-width:2px;
+    classDef store fill:#F0FDFA,stroke:#0D9488;
+    class C,L ai;
+    class H,I,K,N store;

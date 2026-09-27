@@ -1,0 +1,35 @@
+# ── Python ──
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ── Node (only used by the legacy CSV tooling) ──
+node_modules/
+package-lock.json
+
+# ── Runtime artefacts written by the app ──
+samanantar_events.json
+*.local
+
+# ── Secrets — never commit an API key ──
+.env
+.env.*
+secrets/
+
+# ── OS noise ──
+.DS_Store
+Thumbs.db
+
+# ── OS / editor ──
+.vscode/
+.idea/
+*.swp
+
+# ── QA renders (regenerate with pdfplumber, not worth versioning) ──
+_qa_*.png
+
+# ── Abandoned track material (kept locally, never pushed) ──
+archive/

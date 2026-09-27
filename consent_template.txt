@@ -1,0 +1,11 @@
+Samanantar Pilot — Parental Consent (Hindi + English)
+
+[English]
+I allow my child to be assessed using a tablet in the teacher's presence (never alone). No photos or videos will be taken. Data is pseudonymous (ID like SCH01-CL2-017), no name leaves the device. Storage is encrypted (SQLCipher). Assessment is in the classroom, in teacher's view. I can withdraw anytime.
+
+[Hindi]
+मैं अपने बच्चे को शिक्षक की उपस्थिति में टैबलेट से मूल्यांकन की अनुमति देता/देती हूँ (कभी अकेले नहीं)। कोई फोटो/वीडियो नहीं लिया जाएगा। डेटा छद्म-नाम (ID जैसे SCH01-CL2-017) है, नाम डिवाइस से बाहर नहीं जाता। मूल्यांकन कक्षा में शिक्षक की देखरेख में होगा। मैं कभी भी वापस ले सकता/सकती हूँ।
+
+Safeguarding: assess in teacher view, never alone, no photos/PII, opt-in sync, pseudonymous IDs, encrypted at rest.
+Contact: [Teacher Name] / [School] — [Phone]
+Date: ___________  Parent Signature: ___________  Child ID: SCH__-CL_-___
