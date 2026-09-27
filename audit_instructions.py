@@ -28,7 +28,7 @@ rows = [
      "Who is affected" in p[2] and "Mrs. Sharma" in p[5] and "Tertiary" in p[5]),
     ("PROBLEM", "How", "9h assessment cost, invisible regression, compounding absence",
      "9 hours" in p[2] and "Regression is invisible" in p[2]),
-    ("PROBLEM", "1 page", "section occupies page 2 only", "SECTION 1" in p[2]),
+    ("PROBLEM", "1 page", "section occupies page 2 only", "Problem Understanding" in p[2]),
 
     # ---- Proposed Solution (1-2 pages) ----
     ("SOLUTION", "Description of the AI-led solution", "5-step loop, page 3",
@@ -46,7 +46,7 @@ rows = [
     ("USERS", "Planned features in view of user constraints",
      "constraints table + PLANNED FEATURES table, page 6",
      "48 dp" in p[5] and ("PLANNED FEATURES" in p[5] or "constraints" in p[5].lower())),
-    ("USERS", "1-2 pages", "pages 5-6", "SECTION 3" in p[5] and "SECTION 3" in p[6]),
+    ("USERS", "1-2 pages", "pages 5-6", "Users and Context" in p[5] and "Users and Context" in p[6]),
 
     # ---- Innovation and creativity (1-2 pages) ----
     ("INNOVATION", "Novel AI-centred approach/capability", "3 capabilities, page 7",
@@ -55,7 +55,7 @@ rows = [
      all(t in p[8] for t in ["PadhAI", "Generic LLM tutor", "Paper ASER", "TaRL"])),
     ("INNOVATION", "Substantially better and differentiated", "defensible difference + scope",
      "defensible difference" in p[8]),
-    ("INNOVATION", "1-2 pages", "pages 7-8", "SECTION 4" in p[7] and "SECTION 4" in p[8]),
+    ("INNOVATION", "1-2 pages", "pages 7-8", "Innovation and Creativity" in p[7] and "Innovation and Creativity" in p[8]),
 
     # ---- Technology and Data feasibility (1-2 pages) ----
     ("TECH", "Data/resources used for TRAINING the solution", "explicit 'Training data: none' + resource table",
@@ -69,7 +69,7 @@ rows = [
      "Build plan" in p[10] and "minimum detectable" in p[10]),
     ("TECH", "Highlighting the role AI would play", "role per stage: perceives/bounds/decides/checks/calibrates",
      all(t in p[9] + p[10] for t in ["Decides", "Perceives", "Bounds", "Calibrates", "AI checked"])),
-    ("TECH", "1-2 pages", "pages 9-10", "SECTION 5" in p[9] and "SECTION 5" in p[10]),
+    ("TECH", "1-2 pages", "pages 9-10", "Technology and Data" in p[9] and "Technology and Data" in p[10]),
 
     # ---- global: AI-centricity ----
     ("AI-CENTRIC", "AI is central to the solution", "LLM makes the decision, guardrails bound it",

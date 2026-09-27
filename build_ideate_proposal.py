@@ -430,8 +430,6 @@ def build(path: str) -> str:
     st.append(PageBreak())
 
     # ═══════════ 1 · PROBLEM UNDERSTANDING (35% criterion) ═══════════
-    st.append(P("SECTION 1 · PROBLEM UNDERSTANDING", S_GHOST))
-    st.append(P("SECTION 1 · PROBLEM UNDERSTANDING", S_GHOST))
     st.append(_band("SECTION 1 · PROBLEM UNDERSTANDING",
                     "The teacher is not failing to teach. She is failing to see.", 1))
     st.append(Spacer(1, 1.6 * mm))
@@ -519,7 +517,6 @@ def build(path: str) -> str:
                           ('RIGHTPADDING', (0, 0), (-1, -1), 5)])))
     st.append(PageBreak())
     # ═══════════ 2 · PROPOSED SOLUTION 1/2 ═══════════
-    st.append(P("SECTION 2 · PROPOSED SOLUTION (1 OF 2)", S_GHOST))
     st.append(_band("SECTION 2 · PROPOSED SOLUTION (1 OF 2)",
                     "Assess, diagnose, group, teach — in five minutes", 2))
     st.append(Spacer(1, 1.6 * mm))
@@ -652,7 +649,6 @@ def build(path: str) -> str:
     st.append(PageBreak())
 
     # ═══════════ 4 · USERS AND CONTEXT 1/2 (35% criterion) ═══════════
-    st.append(P("SECTION 3 · USERS AND CONTEXT (1 OF 2)", S_GHOST))
     st.append(_band("SECTION 3 · USERS AND CONTEXT (1 OF 2)",
                     "Built for one user, on one device, in one kind of room", 4))
     st.append(Spacer(1, 1.6 * mm))
@@ -731,7 +727,6 @@ def build(path: str) -> str:
     st.append(PageBreak())
 
     # ═══════════ 5 · USERS AND CONTEXT 2/2 ═══════════
-    st.append(P("SECTION 3 · USERS AND CONTEXT (2 OF 2)", S_GHOST))
     st.append(_band("SECTION 3 · USERS AND CONTEXT (2 OF 2)",
                     "The constraints we designed against — and what each one cost us", 5))
     st.append(Spacer(1, 1.6 * mm))
@@ -815,7 +810,6 @@ def build(path: str) -> str:
     st.append(PageBreak())
 
     # ═══════════ 6 · INNOVATION 1/2 (30% criterion) ═══════════
-    st.append(P("SECTION 4 · INNOVATION AND CREATIVITY (1 OF 2)", S_GHOST))
     st.append(_band("SECTION 4 · INNOVATION AND CREATIVITY (1 OF 2)",
                     "What is genuinely new here — and what is honestly just prior art", 6))
     st.append(Spacer(1, 1.6 * mm))
@@ -899,7 +893,6 @@ def build(path: str) -> str:
     st.append(PageBreak())
 
     # ═══════════ 7 · INNOVATION 2/2 — COMPARISON ═══════════
-    st.append(P("SECTION 4 · INNOVATION AND CREATIVITY (2 OF 2)", S_GHOST))
     st.append(_band("SECTION 4 · INNOVATION AND CREATIVITY (2 OF 2)",
                     "Where we sit against what already exists", 7))
     st.append(Spacer(1, 1.6 * mm))
@@ -964,21 +957,7 @@ def build(path: str) -> str:
                              ("LEFTPADDING", (1, 0), (1, 0), 0),
                              ("LINEBEFORE", (1, 0), (1, 0), 0.5, RULE)]))
     st.append(row)
-    st.append(Spacer(1, 1.6 * mm))
-    st.append(tbl([
-        [P("SUBSTANTIALLY BETTER, SUMMARISED", S_TH)],
-        [P("Paper ASER is accurate but takes 12 minutes and vanishes into a register. Content "
-           "apps pitch themselves at the grade. Chatbots answer confidently and cannot be "
-           "verified. Classic TaRL works but schedules itself out of ordinary schools. Only "
-           "Samanantar returns a per-child level, a named misconception and a page-precise next "
-           "action — in five minutes, offline, on the teacher's own phone, with every judgement "
-           "overridable.", S_DENSE)],
-        [P("How to read this slide", S_DENSEB),
-         P("A yes that survives a noisy room and a dead network is worth more than three "
-           "yeses that need perfect conditions. That is the bar every row above is judged "
-           "against.", S_DENSE)],
-    ], [237 * mm], head=True, zebra=False, pad=2.4))
-    st.append(Spacer(1, 1.6 * mm))
+    st.append(Spacer(1, 2.0 * mm))
     st.append(tbl([
         [P("Verifiable in 60 seconds", S_TH), P("How", S_TH)],
         [P("The product runs", S_DENSEB),
@@ -991,7 +970,6 @@ def build(path: str) -> str:
     st.append(PageBreak())
 
     # ═══════════ 8 · TECHNOLOGY AND DATA 1/2 ═══════════
-    st.append(P("SECTION 5 · TECHNOLOGY AND DATA FEASIBILITY (1 OF 2)", S_GHOST))
     st.append(_band("SECTION 5 · TECHNOLOGY AND DATA FEASIBILITY (1 OF 2)",
                     "Stack, resources, and the role AI plays at every layer", 8))
     st.append(Spacer(1, 1.6 * mm))
@@ -1071,7 +1049,6 @@ def build(path: str) -> str:
     st.append(PageBreak())
 
     # ═══════════ 9 · TECHNOLOGY AND DATA 2/2 ═══════════
-    st.append(P("SECTION 5 · TECHNOLOGY AND DATA FEASIBILITY (2 OF 2)", S_GHOST))
     st.append(_band("SECTION 5 · TECHNOLOGY AND DATA FEASIBILITY (2 OF 2)",
                     "Data flow, offline degradation, and how we will prove it works", 9))
     st.append(Spacer(1, 1.2 * mm))
