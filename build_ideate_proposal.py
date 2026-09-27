@@ -401,7 +401,7 @@ def build(path: str) -> str:
          P("Frontier models only recently gained tool-use, so a diagnosis can be forced into an auditable shape, and reliable reasoning over short, noisy, code-switched text. A 2023 team could not have made this output trustworthy. A rules-only team cannot disambiguate it at all.", S_CELL)],
         [P("Built with", S_CELLB),
          P("Claude (Anthropic) · AI4Bharat IndicWhisper / IndicConformer · ONNX Runtime", S_CELL),
-         P("Submission", S_CELLB), P("This PDF · 9 content slides · via Hack2Skill by 27 Sept 2026, 23:59 · one of two distinct submissions (see Team page)", S_CELL)],
+         P("Submission", S_CELLB), P("This PDF · 9 content slides · via Hack2Skill by 27 Sept 2026, 23:59 · a single submission on Challenge 02 (see Team page)", S_CELL)],
     ], [22 * mm, 74 * mm, 36 * mm, 105 * mm], head=False, zebra=False))
     st.append(Spacer(1, 3.2 * mm))
     st.append(tbl([
